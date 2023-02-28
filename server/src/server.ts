@@ -2,9 +2,14 @@ import cors from "cors";
 import express, { Request, Response } from "express";
 import { Configuration, OpenAIApi } from "openai";
 import config from "../config.json";
+import * as dotenv from "dotenv";
 
+dotenv.config();
+
+console.log({ config: config.OpenAiKey });
+console.log({ dotenv: process.env.OPEN_AI });
 const configuration = new Configuration({
-  apiKey: config.OpenAiKey,
+  apiKey: process.env.OPEN_AI,
 });
 
 const openai = new OpenAIApi(configuration);
